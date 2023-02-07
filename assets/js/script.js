@@ -1,3 +1,11 @@
+// Variables
+var zipcodeInput
+var cuisineInput
+var ratingInput
+var priceInput
+var submitBtn
+var modalEl
+
 // Workflow:
 
 // When the submit button on index html is clicked:
@@ -15,13 +23,5 @@
 // Lavanya - Loop through the data from API and set the value of each field in the restaurant group from HTML
 
 // Event listener when the submit button is clicked
-
-// Variables
-var zipcodeInput
-var cuisineInput
-var ratingInput
-var priceInput
-var submitBtn
-var modalEl
 
 
