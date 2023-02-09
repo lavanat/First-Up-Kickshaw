@@ -1,5 +1,6 @@
 body{
     font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
 }
 img {
     height: auto;
@@ -11,4 +12,5 @@ img {
     margin-right: auto;
     width: 50%;
   }
+  html {background-color: black};
   
