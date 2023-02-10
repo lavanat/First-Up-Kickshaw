@@ -3,24 +3,33 @@ var cuisine = "italian"
 var budget = 20
 var minRating = 4.5
 
-
+// Use the openweathermap api to get the lattitude and longitude from the zipcode
 function getLatLong (zipcode)  {
-    var requestURL = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipcode + ",US&appid=d37301983be8abf2d2f02d5906d87205";
-    fetch(requestURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      var lat = data.lat
-      var lon = data.lon
-      formatRestaurantURL (lat,lon)
-    });
+    if (zipcode !== "") {
+        var requestURL = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipcode + ",US&appid=d37301983be8abf2d2f02d5906d87205";
+        fetch(requestURL)
+        .then(function (response) {
+        return response.json();
+        })
+        .then(function (data) {
+        var lat = data.lat
+        var lon = data.lon
+        formatRestaurantURL (lat,lon)
+        });
+    } else {
+        document.getElementById("results-container").style.display = "none"
+        var errMess = document.createElement('div');
+        errMess.textContent = "Please enter a valid zipcode to continue"
+        document.body.appendChild(errMess)
+    }
 }
 
+// take all of the user input parameters and format the URL string
 function formatRestaurantURL (lat,lon) {
     var formattedLat = "&lat=" + lat;
     var formattedLon = "&lng=" + lon;
     var requestURL = "https://api.spoonacular.com/food/restaurants/search?apiKey=2d16b5acc51c4165bb628b5ff87b47c8" + formattedLat + formattedLon
+    // only add the following parameters if they exist
     if (cuisine !== "") {
         formattedCuisine = "&cuisine=" + cuisine;
         requestURL += formattedCuisine
@@ -36,6 +45,7 @@ function formatRestaurantURL (lat,lon) {
     RestaurantAPI (requestURL);
 }
 
+// Call the spoonacular restaurant finder API to return the restaurant info and put it into results.html 
 function RestaurantAPI (requestURL) {
     const options = {
         method: 'GET',
@@ -50,6 +60,7 @@ function RestaurantAPI (requestURL) {
     })
     .then(function (data) {
         for (var i = 0; i < data.restaurants.length; i++) {
+            // had to do i+1 because we started each grouping at 1 instead of 0
             var nameID = "name-" + (i+1);
             var picID = "pic-" + (i+1);
             var addressID = "address-" + (i+1);
@@ -61,28 +72,30 @@ function RestaurantAPI (requestURL) {
             var satID = "sat-" + (i+1);
             var sunID = "sun-" + (i+1);
 
-            document.getElementById(picID).textContent = data.restaurants[i].food_photos
-            document.getElementById(addressID).textContent = data.restaurants[i].address.street_addr + ", " + data.restaurants[i].address.city + ", " + data.restaurants[i].address.state
-            document.getElementById(monID).textContent = data.restaurants[i].local_hours.operational.Monday
-            document.getElementById(tuesID).textContent = data.restaurants[i].local_hours.operational.Tuesday
-            document.getElementById(wedID).textContent = data.restaurants[i].local_hours.operational.Wednesday
-            document.getElementById(thurID).textContent = data.restaurants[i].local_hours.operational.Thursday
-            document.getElementById(friID).textContent = data.restaurants[i].local_hours.operational.Friday
-            document.getElementById(satID).textContent = data.restaurants[i].local_hours.operational.Saturday
-            document.getElementById(sunID).textContent = data.restaurants[i].local_hours.operational.Sunday
+            // this section sets all of the text elements in results.html
+            document.getElementById(nameID).textContent = data.restaurants[i].name;
+            document.getElementById(picID).innerHTML = "<img src='" + data.restaurants[i].food_photos + "'>"
+            document.getElementById(addressID).textContent = data.restaurants[i].address.street_addr + ", " + data.restaurants[i].address.city + ", " + data.restaurants[i].address.state;
+            document.getElementById(monID).textContent = data.restaurants[i].local_hours.operational.Monday;
+            document.getElementById(tuesID).textContent = data.restaurants[i].local_hours.operational.Tuesday;
+            document.getElementById(wedID).textContent = data.restaurants[i].local_hours.operational.Wednesday;
+            document.getElementById(thurID).textContent = data.restaurants[i].local_hours.operational.Thursday;
+            document.getElementById(friID).textContent = data.restaurants[i].local_hours.operational.Friday;
+            document.getElementById(satID).textContent = data.restaurants[i].local_hours.operational.Saturday;
+            document.getElementById(sunID).textContent = data.restaurants[i].local_hours.operational.Sunday;
+        }
+
+        // if there are not 10 results returned by the api, then hide the remaining cards
+        if (data.restaurants.length < 10) {
+            var dif = 10 - data.restaurants.length
+            for (var i = (10 - dif + 1); i < 11; i++) {
+                resultId = "results-" + i
+                document.getElementById(resultId).style.display = "none"
+            }
         }
     });
 
 }
 
-
+// this is the function that starts the api calls
 getLatLong (zipcode)
-
-// restaurant name: name-1 - data.restaurants[i].name
-// restaurant pic: pic-1 - data.restaurants[i].food_photos
-// restaurant address: address-1 : 
-// data.restaurants[i].address.street_addr
-// data.restaurants[i].address.city
-// data.restaurants[i].address.state
-// restaurant hours: mon-1, tues-1, wed-1, thur-1, fri-1, sat-1, sun-1:
-// data.restaurants[i].local-hours.operational.Monday etc
