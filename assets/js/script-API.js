@@ -28,8 +28,9 @@ function getLatLong (zipcode)  {
 function formatRestaurantURL (lat,lon) {
     var formattedLat = "&lat=" + lat;
     var formattedLon = "&lng=" + lon;
-    var requestURL = "https://api.spoonacular.com/food/restaurants/search?apiKey=2d16b5acc51c4165bb628b5ff87b47c8" + formattedLat + formattedLon
-    // only add the following parameters if they exist
+    var apiKey = "2d16b5acc51c4165bb628b5ff87b47c8"
+    var requestURL = "https://api.spoonacular.com/food/restaurants/search?apiKey="+ apiKey + formattedLat + formattedLon
+    // only adds the following parameters if they exist
     if (cuisine !== "") {
         formattedCuisine = "&cuisine=" + cuisine;
         requestURL += formattedCuisine
@@ -45,7 +46,7 @@ function formatRestaurantURL (lat,lon) {
     RestaurantAPI (requestURL);
 }
 
-// Call the spoonacular restaurant finder API to return the restaurant info and put it into results.html 
+// Calls the spoonacular restaurant finder API to return the restaurant info and put it into results.html 
 function RestaurantAPI (requestURL) {
     const options = {
         method: 'GET',
@@ -97,5 +98,7 @@ function RestaurantAPI (requestURL) {
 
 }
 
-// this is the function that starts the api calls
-getLatLong (zipcode)
+// This is the function that starts the api calls. 
+// Uncomment the following line if you want to test this code! 
+// Warning: We only have 50 api calls a day so if you use a live server, we will quickly reach the limit. Use sparingly!
+// getLatLong (zipcode)
