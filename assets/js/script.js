@@ -24,4 +24,5 @@ var modalEl
 
 // Event listener when the submit button is clicked
 
+  
 
