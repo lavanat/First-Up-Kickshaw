@@ -24,4 +24,10 @@ var priceInput
 var submitBtn
 var modalEl
 
-
+let popup = document.getElementById('popup')
+function openPopup(){
+popup.claslist.add('open-popup')
+}
+function closePopup(){
+    popup.claslist.remove('open-popup')
+    }
