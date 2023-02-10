@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+    
     <title>Kickshaw</title>
 </head>
-<body>
-    <header>
-        <h1 id="title">Kickshaw</h1>
-        <img src="assets/images/gourmetDish.jpg" alt="This is an image of a gourmet meat dish."/>
-        <p id="desc">This is a simple program designed to provide users with quality dining options.</p>
+<body class="has-text-light">
+    <header >
+        <h1 id="title" class="is-size-1">Kickshaw</h1>
+        
+        <img src="assets/images/gourmetDish.jpg" alt="This is an image of a gourmet meat dish." id="img" class="center"/>
+    
+        <p id="desc"class="is-size-5">This is a simple program designed to provide users with quality dining options.</p>
     </header>
     <div>
-        <form>
+        <form class="has-text-white-ter">
          <label>Zipcode:<input type="number" id="zipcode"/></label> <!--script must limit # to 5 digit-->
          <label>Cuisine:<input type="string" id="cuisine"/></label>
          <label>Rating:<select id="rating">></select></label>
