@@ -3,8 +3,41 @@ var cuisine = "italian"
 var budget = 20
 var minRating = 4.5
 
+function saveToLocalStorage (zipcode,cuisine,budget,minRating) {
+    var counter
+    var pastSearches = {}
+    if (localStorage.getItem("counter") === null) {
+        counter = 1;
+    } else {
+        counter = parseInt(localStorage.getItem("counter")) + 1; 
+    }
+    localStorage.setItem("counter", counter);
+    currentSearch = [zipcode, cuisine, budget, minRating];
+    searchKey = "search" + counter;
+    if (localStorage.getItem("pastSearches") === null) {
+        pastSearches[searchKey] = currentSearch;
+        localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
+    } else {
+        pastSearches = JSON.parse(localStorage.getItem("pastSearches"));
+        pastSearches[searchKey] = currentSearch;
+        localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
+    }
+    createSearchButton(searchKey,currentSearch);
+}
+
+function createSearchButton (searchKey,currentSearch) {
+    var searchHistory = document.getElementById("past-searches");
+    buttonText = currentSearch[1] + " food in " + currentSearch[0] + " with a budget under " + currentSearch[2] + "and a minimum rating of " + currentSearch[3]
+    let newButton = document.createElement("button")
+    newButton.id = searchKey;
+    newButton.textContent = buttonText;
+    searchHistory.append(newButton);
+}
+
+saveToLocalStorage(zipcode,cuisine,budget,minRating)
+
 // Use the openweathermap api to get the lattitude and longitude from the zipcode
-function getLatLong (zipcode)  {
+function getLatLong (zipcode,cuisine,budget,minRating)  {
     if (zipcode !== "") {
         var requestURL = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipcode + ",US&appid=d37301983be8abf2d2f02d5906d87205";
         fetch(requestURL)
@@ -14,7 +47,7 @@ function getLatLong (zipcode)  {
         .then(function (data) {
         var lat = data.lat
         var lon = data.lon
-        formatRestaurantURL (lat,lon)
+        formatRestaurantURL (lat,lon,cuisine,budget,minRating)
         });
     } else {
         document.getElementById("results-container").style.display = "none"
@@ -25,7 +58,7 @@ function getLatLong (zipcode)  {
 }
 
 // take all of the user input parameters and format the URL string
-function formatRestaurantURL (lat,lon) {
+function formatRestaurantURL (lat,lon,cuisine,budget,minRating) {
     var formattedLat = "&lat=" + lat;
     var formattedLon = "&lng=" + lon;
     var apiKey = "2d16b5acc51c4165bb628b5ff87b47c8"
