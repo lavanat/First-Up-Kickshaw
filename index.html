@@ -28,11 +28,14 @@
     
         <p id="desc"class="is-size-5">This is a simple program designed to provide users with quality dining options.</p>
     </header>
+    
+
+
     <div>
         <form class="has-text-white-ter">
-         <label>Zipcode:<input type="number" id="zipcode"/></label> <!--script must limit # to 5 digit-->
+         <label>Zipcode:<input name= "onlynumbers" type="text" placeholder="5 digit zipcode" id="zipcode" maxlength="5" /></label> <!--script must limit # to 5 digit-->
          <label>Cuisine:<input type="string" id="cuisine"/></label>
-         <label>Rating:<select id="rating">></select></label>
+         <label>Rating:<select id="rating" pattern="[1,5]">></select></label>
          <label>Price:<select id="price">></select></label>           
         </form>
         <button type="submit">Submit</button>
