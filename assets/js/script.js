@@ -23,6 +23,16 @@ var ratingInput
 var priceInput
 var submitBtn
 var modalEl
+var openButton = document.querySelector('#open')
+var closeButton = document.querySelector('#close')
 
-  
+let popup = document.querySelector('.popup')
+function openPopup(){
+popup.classList.add('open-popup')
+}
+function closePopup(){
+    popup.classList.remove('open-popup')
+    }
 
+openButton.addEventListener('click',openPopup)
+closeButton.addEventListener('click',closePopup)
