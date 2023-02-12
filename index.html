@@ -9,6 +9,18 @@
     <title>Kickshaw</title>
 </head>
 <body class="has-text-light">
+    <div class="container">
+        
+        <div class="model-container">
+        <button type="submit" class="btn" id="open">Hungry? Let's get started!</button>
+        <div class="popup" id="popup">
+            <h5>Here's how Kickshaw works..</h5>
+            <p>Simply enter you zipcode, select filters for resturants and hit submit!</p>
+            <button type="button" id="close">OKAY!</button>
+        </div>
+
+        </div>
+    </div>
     <header >
         <h1 id="title" class="is-size-1">Kickshaw</h1>
         
@@ -25,8 +37,12 @@
         </form>
         <button type="submit">Submit</button>
     </div>
+
+    <div id="past-searches"></div>
  
     
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/script-API.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
