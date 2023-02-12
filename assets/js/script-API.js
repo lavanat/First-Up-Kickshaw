@@ -1,17 +1,17 @@
-// these variables are test variables, need to update this with what is in Graham's code
-// var zipcode = "30024";
-// var cuisine = "italian"
-// var budget = 20
-// var minRating = 4.5
+ //these variables are test variables, need to update this with what is in Graham's code
+ var zipcode = "30024";
+var cuisine = "italian"
+var budget = 20
+var minRating = 4.5
 
 // Need to put this into the init function
-// loadSearchButtons();
-// document.getElementById("results-container").style.display = "none"
+loadSearchButtons();
+document.getElementById("results-container").style.display = "none"
 
 
 // Need to put this into the submit button
 // getLatLong (zipcode,cuisine,budget,minRating)
-// saveToLocalStorage (zipcode,cuisine,budget,minRating)
+saveToLocalStorage (zipcode,cuisine,budget,minRating)
 
 
 // Function to save user's current search into LocalStorage. 
