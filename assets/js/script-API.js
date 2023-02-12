@@ -1,8 +1,21 @@
-var zipcode = "30024";
-var cuisine = "italian"
-var budget = 20
-var minRating = 4.5
+// these variables are test variables, need to update this with what is in Graham's code
+// var zipcode = "30024";
+// var cuisine = "italian"
+// var budget = 20
+// var minRating = 4.5
 
+// Need to put this into the init function
+// loadSearchButtons();
+// document.getElementById("results-container").style.display = "none"
+
+
+// Need to put this into the submit button
+// getLatLong (zipcode,cuisine,budget,minRating)
+// saveToLocalStorage (zipcode,cuisine,budget,minRating)
+
+
+// Function to save user's current search into LocalStorage. 
+// Gets called when the submit button is clicked.
 function saveToLocalStorage (zipcode,cuisine,budget,minRating) {
     var counter
     var pastSearches = {}
@@ -25,6 +38,8 @@ function saveToLocalStorage (zipcode,cuisine,budget,minRating) {
     createSearchButton(searchKey,currentSearch);
 }
 
+// Creates a search button for a previously-saved search.
+// Gets called within saveToLocalStorage and loadSearchButtons
 function createSearchButton (searchKey,currentSearch) {
     var searchHistory = document.getElementById("past-searches");
     buttonText = currentSearch[1] + " food in " + currentSearch[0] + " with a budget under " + currentSearch[2] + " and a minimum rating of " + currentSearch[3]
@@ -35,6 +50,7 @@ function createSearchButton (searchKey,currentSearch) {
     searchHistory.append(newButton);
 }
 
+// Loads the search buttons when you open the page (index or results)
 function loadSearchButtons () {
     if (localStorage.getItem("pastSearches") !== null) {
         var searchHistory = document.getElementById("past-searches");
@@ -52,7 +68,26 @@ function loadSearchButtons () {
     }
 }
 
+// This is the code to handle when a previous search button is clicked. Had to add jquery to html file for this.
+var searchContainer = $("#past-searches");
+searchContainer.on("click", ".searchButtons", function(event) {
+    var buttonID = $(this).attr("id");
+    var searchParams = JSON.parse(localStorage.getItem("pastSearches"))[buttonID]
+    var zipParam = searchParams[0];
+    var cuisineParam = searchParams[1];
+    var budgetParam = searchParams[2];
+    var ratingParam = searchParams[3];
+    // updating the values of the inputs so that the user knows what they clicked
+    document.getElementById("zipcode").value = zipParam;
+    document.getElementById("cuisine").value = cuisineParam;
+    document.getElementById("rating").value = budgetParam;
+    document.getElementById("price").value = ratingParam;
+
+    getLatLong(zipParam,cuisineParam,budgetParam,ratingParam);
+})
+
 // Use the openweathermap api to get the lattitude and longitude from the zipcode
+// Gets called when the submit button is clicked or a previous search history is clicked
 function getLatLong (zipcode,cuisine,budget,minRating)  {
     if (zipcode !== "") {
         var requestURL = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipcode + ",US&appid=d37301983be8abf2d2f02d5906d87205";
@@ -73,7 +108,7 @@ function getLatLong (zipcode,cuisine,budget,minRating)  {
     }
 }
 
-// take all of the user input parameters and format the URL string
+// take all of the user input parameters and format the URL string. Gets called from getLatLong
 function formatRestaurantURL (lat,lon,cuisine,budget,minRating) {
     var formattedLat = "&lat=" + lat;
     var formattedLon = "&lng=" + lon;
@@ -95,7 +130,8 @@ function formatRestaurantURL (lat,lon,cuisine,budget,minRating) {
     RestaurantAPI (requestURL);
 }
 
-// Calls the spoonacular restaurant finder API to return the restaurant info and put it into results.html 
+// Queries the spoonacular restaurant finder API to return the restaurant info and put it into results.html
+// Gets called from formatRestaurantURL 
 function RestaurantAPI (requestURL) {
     const options = {
         method: 'GET',
@@ -133,6 +169,7 @@ function RestaurantAPI (requestURL) {
             document.getElementById(friID).textContent = data.restaurants[i].local_hours.operational.Friday;
             document.getElementById(satID).textContent = data.restaurants[i].local_hours.operational.Saturday;
             document.getElementById(sunID).textContent = data.restaurants[i].local_hours.operational.Sunday;
+            document.getElementById("results-container").style.display = ""
         }
 
         // if there are not 10 results returned by the api, then hide the remaining cards
@@ -146,8 +183,3 @@ function RestaurantAPI (requestURL) {
     });
 
 }
-
-// This is the function that starts the api calls. 
-// Uncomment the following line if you want to test this code! 
-// Warning: We only have 50 api calls a day so if you use a live server, we will quickly reach the limit. Use sparingly!
-// getLatLong (zipcode)
