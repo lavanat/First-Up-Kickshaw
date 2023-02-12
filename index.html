@@ -18,10 +18,10 @@
     </header>
     <div>
         <form class="has-text-white-ter">
-         <label>Zipcode:<input type="number" id="zipcode"/></label> <!--script must limit # to 5 digit-->
-         <label>Cuisine:<input type="string" id="cuisine"/></label>
-         <label>Rating:<select id="rating">></select></label>
-         <label>Price:<select id="price">></select></label>           
+            <input type="text" id="zipcode" maxlength="5" min="0" max="99999" pattern="[0-9]+" placeholder="Zipcode" required/> <!--script must limit # to 5 digit-->
+            <input type="string" id="cuisine" placeholder="Cuisine"/>
+            <input type="tel" id="rating" placeholder="Rating (1-5)" maxlength="1" min="1" max="5"/> <!--1 digit, less than 6--> 
+            <input type="number" id="price" placeholder="Price" min="0"/>          
         </form>
         <button type="submit">Submit</button>
     </div>
