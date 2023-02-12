@@ -86,6 +86,8 @@ searchContainer.on("click", ".searchButtons", function(event) {
     getLatLong(zipParam,cuisineParam,budgetParam,ratingParam);
 })
 
+// START OF API HANDLING CODE
+
 // Use the openweathermap api to get the lattitude and longitude from the zipcode
 // Gets called when the submit button is clicked or a previous search history is clicked
 function getLatLong (zipcode,cuisine,budget,minRating)  {
