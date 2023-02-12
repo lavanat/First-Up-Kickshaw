@@ -27,14 +27,30 @@ function saveToLocalStorage (zipcode,cuisine,budget,minRating) {
 
 function createSearchButton (searchKey,currentSearch) {
     var searchHistory = document.getElementById("past-searches");
-    buttonText = currentSearch[1] + " food in " + currentSearch[0] + " with a budget under " + currentSearch[2] + "and a minimum rating of " + currentSearch[3]
+    buttonText = currentSearch[1] + " food in " + currentSearch[0] + " with a budget under " + currentSearch[2] + " and a minimum rating of " + currentSearch[3]
     let newButton = document.createElement("button")
     newButton.id = searchKey;
+    newButton.classList.add("searchButtons")
     newButton.textContent = buttonText;
     searchHistory.append(newButton);
 }
 
-saveToLocalStorage(zipcode,cuisine,budget,minRating)
+function loadSearchButtons () {
+    if (localStorage.getItem("pastSearches") !== null) {
+        var searchHistory = document.getElementById("past-searches");
+        var titleEl = document.createElement("h2");
+        titleEl.textContent = "Previous Searches";
+        searchHistory.append(titleEl);
+
+        var pastSavedSearches = JSON.parse(localStorage.getItem("pastSearches"));
+        var searchObj = Object.entries(pastSavedSearches);
+        for (i=0; i < searchObj.length; i++) {
+            var currentKey = searchObj[i][0]
+            var currentSearch = searchObj[i][1]
+            createSearchButton(currentKey,currentSearch)
+        }
+    }
+}
 
 // Use the openweathermap api to get the lattitude and longitude from the zipcode
 function getLatLong (zipcode,cuisine,budget,minRating)  {
