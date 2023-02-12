@@ -86,4 +86,10 @@ img {
   .container {
     padding: 2px 16px;
   }
+  .resturant-pic {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+  }
+
   
