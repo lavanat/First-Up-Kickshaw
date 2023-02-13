@@ -33,19 +33,34 @@
 
     <div>
         <form class="has-text-white-ter">
-         <label>Zipcode:<input type="number" id="zipcode"/></label> <!--script must limit # to 5 digit-->
+         <label>Zipcode:<input type="text" id="zipcode" placeholder="5 Digit Zipcode" maxlength="5"/></label> <!--script must limit # to 5 digit-->
          <label>Cuisine:<input type="string" id="cuisine"/></label>
-         <label>Rating:<select id="rating"></select></label>
-         <label>Price:<select id="price"></select></label>           
+         <label>Rating:<select id="rating">
+            <option value="Select Rating">Select Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+         </select></label>
+           
+         <label>Price:<select id="price">
+            <option value="Select Price Lvl">Select Price Lvl</option>
+            <option value="20">$</option>
+            <option value="40">$$</option>
+            <option value="60">$$$</option>
+            <option value="100">$$$$</option>
+         </select></label>   
+
         </form>
-        <button type="submit">Submit</button>
+        <button type="submit" id="btn">Submit</button>
     </div>
 
     <div id="past-searches"></div>
  
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/script-API.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>

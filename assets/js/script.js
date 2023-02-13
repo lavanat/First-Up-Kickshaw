@@ -33,3 +33,20 @@ function closePopup(){
 
 openButton.addEventListener('click',openPopup)
 closeButton.addEventListener('click',closePopup)
+
+var btn = document.querySelector("#btn")
+
+function inputValidator () {
+    var inputEl = document.querySelector("#zipcode").value;
+    if (inputEl !== "") {
+        var x = parseInt(inputEl);
+        if (isNaN(x)) {
+            console.log("Not a number")
+        
+        } else {
+            console.log("This works")
+        }
+    }
+}
+
+btn.addEventListener("click", inputValidator)
