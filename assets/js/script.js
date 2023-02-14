@@ -23,13 +23,53 @@ var modalEl
 var openButton = document.querySelector('#open')
 var closeButton = document.querySelector('#close')
 
-let popup = document.querySelector('.popup')
-function openPopup(){
-popup.classList.add('open-popup')
-}
-function closePopup(){
-    popup.classList.remove('open-popup')
-    }
+// let popup = document.querySelector('.popup')
+// function openPopup(){
+// popup.classList.add('open-popup')
+// }
+// function closePopup(){
+//     popup.classList.remove('open-popup')
+//     }
 
-openButton.addEventListener('click',openPopup)
-closeButton.addEventListener('click',closePopup)
+// openButton.addEventListener('click',openPopup)
+// closeButton.addEventListener('click',closePopup)
+
+var btn = document.querySelector("#btn")
+
+function inputValidator () {
+    var inputEl = document.querySelector("#zipcode").value;
+    if (inputEl !== "") {
+        var x = parseInt(inputEl);
+        if (isNaN(x)) {
+            document.getElementById("zipcodeError").textContent="Please Enter 5 Digit Zipcode"
+        
+        } else {
+           // launchResults() 
+           return true
+        }
+    }
+}
+
+btn.addEventListener("click", async function (){
+    await inputValidator ()
+    var zip = document.getElementById("zipcode").value     
+    var price = document.getElementById("price").value  
+    var cuisine = document.getElementById("cuisine").value  
+    var rating = document.getElementById("rating").value  
+
+    getLatLong (zip,cuisine,price,rating)
+    saveToLocalStorage (zip,cuisine,price,rating)
+}
+
+)
+
+function launchResults () {
+   // window.location.replace("results.html")
+    var zip = document.getElementById("zipcode").value     
+    var price = document.getElementById("price").value  
+    var cuisine = document.getElementById("cuisine").value  
+    var rating = document.getElementById("rating").value  
+
+    getLatLong (zip,cuisine,price,rating)
+    saveToLocalStorage (zip,cuisine,price,rating)
+}
