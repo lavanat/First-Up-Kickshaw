@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+   
     
     <title id="title">Kickshaw</title>
 </head>
@@ -20,10 +22,10 @@
         </div>
     </div>
     <header>
-        <h1 class="is-size-1" id="title">Kickshaw</h1>
+        <h1 class="is-size-1"  class="fa-fa-cutlery" id="title">Kickshaw</h1>
+        <i class="fa fa-cutlery" aria-hidden="true"></i>
         <img src="assets/images/gourmetDish.jpg" alt="This is an image of a gourmet meat dish." 
-        width="400" 
-        height="500"/>
+        width="400"  height="500" />
         <p id="desc">This is a simple program designed to provide users with quality dining options.</p>
     </header>
 
@@ -53,16 +55,17 @@
     <p id="zipcodeError"></p>
     <div id="past-searches"></div>
     
-    <hr>
+    <div id="results-container" class="results-container card" style></div>
 
-    <div id= "results-container" class="results-container">
-        <section class="results" id="results-1"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-1"></h2>
-            <p class="resturant-pic" 
-            id="pic-1"></p>
-            <p class="resturant-address" 
-            id="address-1"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-1">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-1">I am the name</h2>
+            <p class="resturant-address" id="address-1">Address goes here</p>
             <ul class="resturant-hours" id="hours-1">
                 <li>Monday: <span id="mon-1"></span></li>
                 <li>Tuesday: <span id="tues-1"></span></li>
@@ -72,16 +75,19 @@
                 <li>Saturday: <span id="sat-1"></span></li>
                 <li>Sunday: <span id="sun-1"></span></li>
             </ul>
-        
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-2"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-2"></h2>
-            <p class="resturant-pic" 
-            id="pic-2"></p>
-            <p class="resturant-address" 
-            id="address-2"></p>
+    
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-2">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-2">I am the name</h2>
+            <p class="resturant-address" id="address-2">Address goes here</p>
             <ul class="resturant-hours" id="hours-2">
                 <li>Monday: <span id="mon-2"></span></li>
                 <li>Tuesday: <span id="tues-2"></span></li>
@@ -91,15 +97,17 @@
                 <li>Saturday: <span id="sat-2"></span></li>
                 <li>Sunday: <span id="sun-2"></span></li>
             </ul>
-        </section>
-
-        <section class="results" id="results-3"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-3"></h2>
-            <p class="resturant-pic" 
-            id="pic-3"></p>
-            <p class="resturant-address" 
-            id="address-3"></p>
+        </div>
+    </div>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-3">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-3">I am the name</h2>
+            <p class="resturant-address" id="address-3">Address goes here</p>
             <ul class="resturant-hours" id="hours-3">
                 <li>Monday: <span id="mon-3"></span></li>
                 <li>Tuesday: <span id="tues-3"></span></li>
@@ -109,15 +117,18 @@
                 <li>Saturday: <span id="sat-3"></span></li>
                 <li>Sunday: <span id="sun-3"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-4"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-4"></h2>
-            <p class="resturant-pic" 
-            id="pic-4"></p>
-            <p class="resturant-address" 
-            id="address-4"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-4">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-4">I am the name</h2>
+            <p class="resturant-address" id="address-4">Address goes here</p>
             <ul class="resturant-hours" id="hours-4">
                 <li>Monday: <span id="mon-4"></span></li>
                 <li>Tuesday: <span id="tues-4"></span></li>
@@ -127,15 +138,18 @@
                 <li>Saturday: <span id="sat-4"></span></li>
                 <li>Sunday: <span id="sun-4"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-5"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-5"></h2>
-            <p class="resturant-pic" 
-            id="pic-5"></p>
-            <p class="resturant-address" 
-            id="address-5"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-5">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-5">I am the name</h2>
+            <p class="resturant-address" id="address-5">Address goes here</p>
             <ul class="resturant-hours" id="hours-5">
                 <li>Monday: <span id="mon-5"></span></li>
                 <li>Tuesday: <span id="tues-5"></span></li>
@@ -145,15 +159,18 @@
                 <li>Saturday: <span id="sat-5"></span></li>
                 <li>Sunday: <span id="sun-5"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-6"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-6"></h2>
-            <p class="resturant-pic" 
-            id="pic-6"></p>
-            <p class="resturant-address" 
-            id="address-6"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-6">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-6">I am the name</h2>
+            <p class="resturant-address" id="address-6">Address goes here</p>
             <ul class="resturant-hours" id="hours-6">
                 <li>Monday: <span id="mon-6"></span></li>
                 <li>Tuesday: <span id="tues-6"></span></li>
@@ -163,15 +180,18 @@
                 <li>Saturday: <span id="sat-6"></span></li>
                 <li>Sunday: <span id="sun-6"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-7"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-7"></h2>
-            <p class="resturant-pic" 
-            id="pic-7"></p>
-            <p class="resturant-address" 
-            id="address-7"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-7">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-7">I am the name</h2>
+            <p class="resturant-address" id="address-7">Address goes here</p>
             <ul class="resturant-hours" id="hours-7">
                 <li>Monday: <span id="mon-7"></span></li>
                 <li>Tuesday: <span id="tues-7"></span></li>
@@ -181,15 +201,18 @@
                 <li>Saturday: <span id="sat-7"></span></li>
                 <li>Sunday: <span id="sun-7"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-8"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-8"></h2>
-            <p class="resturant-pic" 
-            id="pic-8"></p>
-            <p class="resturant-address" 
-            id="address-8"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-8">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-8">I am the name</h2>
+            <p class="resturant-address" id="address-8">Address goes here</p>
             <ul class="resturant-hours" id="hours-8">
                 <li>Monday: <span id="mon-8"></span></li>
                 <li>Tuesday: <span id="tues-8"></span></li>
@@ -199,15 +222,18 @@
                 <li>Saturday: <span id="sat-8"></span></li>
                 <li>Sunday: <span id="sun-8"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-9"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-9"></h2>
-            <p class="resturant-pic" 
-            id="pic-9"></p>
-            <p class="resturant-address" 
-            id="address-9"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-9">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-9">I am the name</h2>
+            <p class="resturant-address" id="address-9">Address goes here</p>
             <ul class="resturant-hours" id="hours-9">
                 <li>Monday: <span id="mon-9"></span></li>
                 <li>Tuesday: <span id="tues-9"></span></li>
@@ -217,15 +243,18 @@
                 <li>Saturday: <span id="sat-9"></span></li>
                 <li>Sunday: <span id="sun-9"></span></li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="results" id="results-10"> <!--duplicate this section-->
-            <h2 class="restaurant-name" 
-            id="name-10"></h2>
-            <p class="resturant-pic" 
-            id="pic-10"></p>
-            <p class="resturant-address" 
-            id="address-10"></p>
+    <div class="card results">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <p class="resturant-pic" id="pic-10">I am a pretty picture</p>
+          </figure>
+        </div>
+        <div class="card-content">
+            <h2 class="restaurant-name" id="name-10">I am the name</h2>
+            <p class="resturant-address" id="address-10">Address goes here</p>
             <ul class="resturant-hours" id="hours-10">
                 <li>Monday: <span id="mon-10"></span></li>
                 <li>Tuesday: <span id="tues-10"></span></li>
@@ -235,8 +264,30 @@
                 <li>Saturday: <span id="sat-10"></span></li>
                 <li>Sunday: <span id="sun-10"></span></li>
             </ul>
-        </section>
+        </div>
     </div>
+
+
+
+
+
+
+
+                 
+        
+
+<p class="resturant-pic" id="pic-1"></p>
+<p class="resturant-pic" id="pic-2"></p>
+<p class="resturant-pic" id="pic-3"></p>
+<p class="resturant-pic" id="pic-4"></p>
+<p class="resturant-pic" id="pic-5"></p>
+<p class="resturant-pic" id="pic-6"></p>
+<p class="resturant-pic" id="pic-7"></p>
+<p class="resturant-pic" id="pic-8"></p>
+<p class="resturant-pic" id="pic-9"></p>
+<p class="resturant-pic" id="pic-10"></p>
+
+
  
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
