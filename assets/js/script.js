@@ -61,12 +61,12 @@ function saveToLocalStorage (zipcode,cuisine,budget,minRating) {
 
 // Loads the search buttons when you open the page (index or results)
 function loadSearchButtons () { 
+    document.getElementById("past-searches").innerHTML = ""
     if (localStorage.getItem("pastSearches") !== null) {
         var searchHistory = document.getElementById("past-searches");
         var titleEl = document.createElement("h2");
         titleEl.textContent = "Previous Searches";
         searchHistory.append(titleEl);
-
         var pastSavedSearches = JSON.parse(localStorage.getItem("pastSearches"));
         var searchObj = Object.entries(pastSavedSearches);
         for (i=0; i < searchObj.length; i++) {
@@ -150,7 +150,8 @@ function RestaurantAPI (requestURL) {
         return response.json();
     })
     .then(function (data) {
-        for (var i = 0; i < data.restaurants.length; i++) {
+        const dataArray = data.restaurants.slice(0,10)
+        for (var i = 0; i < dataArray.length; i++) {
             // had to do i+1 because we started each grouping at 1 instead of 0
             var nameID = "name-" + (i+1);
             var picID = "pic-" + (i+1);
@@ -178,7 +179,7 @@ function RestaurantAPI (requestURL) {
         }
 
         // if there are not 10 results returned by the api, then hide the remaining cards
-        if (data.restaurants.length < 10) {
+        if ((dataArray.length < 10) && (dataArray.length > 0)) {
             var dif = 10 - data.restaurants.length
             for (var i = (10 - dif + 1); i < 11; i++) {
                 resultId = "results-" + i
