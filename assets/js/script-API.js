@@ -1,17 +1,5 @@
-// these variables are test variables, need to update this with what is in Graham's code
-// var zipcode = "30024";
-// var cuisine = "italian"
-// var budget = 20
-// var minRating = 4.5
-
-// Need to put this into the init function
-// loadSearchButtons();
-// document.getElementById("results-container").style.display = "none"
-
-
-// Need to put this into the submit button
-// getLatLong (zipcode,cuisine,budget,minRating)
-// saveToLocalStorage (zipcode,cuisine,budget,minRating)
+// COPIED ALL OF THIS OVER TO SCRIPT.JS TO PUT EVERYTHING ONTO ONE JS FILE. 
+// THIS IS NOT CONNECTED TO ANY HTML.
 
 
 // Function to save user's current search into LocalStorage. 
@@ -35,23 +23,15 @@ function saveToLocalStorage (zipcode,cuisine,budget,minRating) {
         pastSearches[searchKey] = currentSearch;
         localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
     }
-    createSearchButton(searchKey,currentSearch);
-}
+    loadSearchButtons ();
+    document.getElementById("results-container").style.display = "none"
+    getLatLong (zipcode,cuisine,budget,minRating)
 
-// Creates a search button for a previously-saved search.
-// Gets called within saveToLocalStorage and loadSearchButtons
-function createSearchButton (searchKey,currentSearch) {
-    var searchHistory = document.getElementById("past-searches");
-    buttonText = currentSearch[1] + " food in " + currentSearch[0] + " with a budget under " + currentSearch[2] + " and a minimum rating of " + currentSearch[3]
-    let newButton = document.createElement("button")
-    newButton.id = searchKey;
-    newButton.classList.add("searchButtons")
-    newButton.textContent = buttonText;
-    searchHistory.append(newButton);
 }
 
 // Loads the search buttons when you open the page (index or results)
-function loadSearchButtons () {
+function loadSearchButtons () { 
+    console.log(localStorage.getItem("pastSearches"))
     if (localStorage.getItem("pastSearches") !== null) {
         var searchHistory = document.getElementById("past-searches");
         var titleEl = document.createElement("h2");
@@ -66,6 +46,18 @@ function loadSearchButtons () {
             createSearchButton(currentKey,currentSearch)
         }
     }
+}
+
+// Creates a search button for a previously-saved search.
+// Gets called within loadSearchButtons
+function createSearchButton (searchKey,currentSearch) {
+    var searchHistory = document.getElementById("past-searches");
+    buttonText = currentSearch[1] + " food in " + currentSearch[0] + " with a budget under " + currentSearch[2] + " and a minimum rating of " + currentSearch[3]
+    let newButton = document.createElement("button")
+    newButton.id = searchKey;
+    newButton.classList.add("searchButtons")
+    newButton.textContent = buttonText;
+    searchHistory.append(newButton);
 }
 
 // This is the code to handle when a previous search button is clicked. Had to add jquery to html file for this.
