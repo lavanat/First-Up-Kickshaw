@@ -98,3 +98,8 @@ img {
   }
 
   
+  .results{
+    background-color: pink;
+    margin-bottom: 20px;
+    max-width: 400px;
+  }
