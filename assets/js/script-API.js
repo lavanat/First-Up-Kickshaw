@@ -1,5 +1,5 @@
  //these variables are test variables, need to update this with what is in Graham's code
- //var zipcode = "30024";
+// var zipcode = "30024";
 //var cuisine = "italian"
 //var budget = 20
 //var minRating = 4.5

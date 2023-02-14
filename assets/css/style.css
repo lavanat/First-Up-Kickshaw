@@ -52,8 +52,9 @@ position: absolute;
 body{
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
-
+    width: 100%;
 }
+
 img {
     height: auto;
     max-width: 100%;
@@ -102,4 +103,20 @@ img {
     background-color: pink;
     margin-bottom: 20px;
     max-width: 400px;
+    
   }
+
+/* #results-container{
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  column-gap: 10px;
+  row-gap: 15px;
+} */
+
+#results-containers {
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+  

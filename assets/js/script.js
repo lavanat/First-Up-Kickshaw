@@ -31,5 +31,5 @@ function closePopup(){
     popup.classList.remove('open-popup')
     }
 
-openButton.addEventListener('click',openPopup)
-closeButton.addEventListener('click',closePopup)
+//openButton.addEventListener('click',openPopup)
+//closeButton.addEventListener('click',closePopup)
