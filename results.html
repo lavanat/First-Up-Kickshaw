@@ -11,6 +11,16 @@
     <title id="title">Kickshaw</title>
 </head>
 <body class="has-text-light">
+    <div class="container">
+        <div class="model-container">
+            <button type="submit" class="btn" id="open">Hungry? Let's get started!</button>
+            <div class="popup" id="popup">
+                <h5>Here's how Kickshaw works..</h5>
+                <p>Simply enter you zipcode, select filters for resturants and hit submit!</p>
+                <button type="button" id="close">OKAY!</button>
+            </div>
+        </div>
+    </div>
     <header>
         <h1 class="is-size-1"  class="fa-fa-cutlery" id="title">Kickshaw</h1>
         <i class="fa fa-cutlery" aria-hidden="true"></i>
@@ -18,19 +28,34 @@
         width="400"  height="500" />
         <p id="desc">This is a simple program designed to provide users with quality dining options.</p>
     </header>
-    <div>
-        <form class="has-text-white-ter is-size-5">
-         <input type="text" id="zipcode" maxlength="5" min="0" max="99999" pattern="[0-9]+" placeholder="Zipcode" required/> <!--script must limit # to 5 digit-->
-         <input type="string" id="cuisine" placeholder="Cuisine"/>
-         <input type="tel" id="rating" placeholder="Rating (1-5)" maxlength="1" min="1" max="5"/> <!--1 digit, less than 6--> 
-         <input type="number" id="price" placeholder="Price" min="0"/>          
-        </form>
-        <button type="submit" id="btn">Submit</button>
-    </div>
 
+    <div>
+        <form class="has-text-white-ter">
+         <label>Zipcode:<input type="text" id="zipcode" placeholder="5 Digit Zipcode" maxlength="5"/></label> <!--script must limit # to 5 digit-->
+         <label>Cuisine:<input type="string" id="cuisine"/></label>
+         <label>Rating:<select id="rating">
+            <option value="Select Rating">Select Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+         </select></label>
+           
+         <label>Price:<select id="price">
+            <option value="Select Price Lvl">Select Price Lvl</option>
+            <option value="20">$</option>
+            <option value="40">$$</option>
+            <option value="60">$$$</option>
+            <option value="100">$$$$</option>
+         </select></label> 
+        </form>
+        <button type="submit" id="submitBtn">Submit</button>
+    </div>
+    <p id="zipcodeError"></p>
     <div id="past-searches"></div>
     
-    <div id="results-container" class="results-container card" style></div>
+    <div id="results-container" class="results-container card" style>
 
     <div class="card results">
         <div class="card-image">
@@ -242,32 +267,10 @@
         </div>
     </div>
 
+</div>
 
-
-
-
-
-
-                 
-        
-
-<p class="resturant-pic" id="pic-1"></p>
-<p class="resturant-pic" id="pic-2"></p>
-<p class="resturant-pic" id="pic-3"></p>
-<p class="resturant-pic" id="pic-4"></p>
-<p class="resturant-pic" id="pic-5"></p>
-<p class="resturant-pic" id="pic-6"></p>
-<p class="resturant-pic" id="pic-7"></p>
-<p class="resturant-pic" id="pic-8"></p>
-<p class="resturant-pic" id="pic-9"></p>
-<p class="resturant-pic" id="pic-10"></p>
-
-
- 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/script-API.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
