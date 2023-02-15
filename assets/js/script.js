@@ -95,7 +95,7 @@ function createSearchButton (searchKey,currentSearch) {
 // Gets called when the submit button is clicked or a previous search history is clicked
 function getLatLong (zipcode,cuisine,budget,minRating)  {
     if (zipcode !== "") {
-        var requestURL = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipcode + ",US&appid=d37301983be8abf2d2f02d5906d87205";
+        var requestURL = "https://api.openweathermap.org/geo/1.0/zip?zip=" + zipcode + ",US&appid=d37301983be8abf2d2f02d5906d87205";
         fetch(requestURL)
         .then(function (response) {
         return response.json();
@@ -117,7 +117,7 @@ function getLatLong (zipcode,cuisine,budget,minRating)  {
 function formatRestaurantURL (lat,lon,cuisine,budget,minRating) {
     var formattedLat = "&lat=" + lat;
     var formattedLon = "&lng=" + lon;
-    var apiKey = "2d16b5acc51c4165bb628b5ff87b47c8"
+    var apiKey = "b2c2967dc5fd4b899471d38bc9f73a16"
     var requestURL = "https://api.spoonacular.com/food/restaurants/search?apiKey="+ apiKey + formattedLat + formattedLon
     // only adds the following parameters if they exist
     if (cuisine !== "") {
