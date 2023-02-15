@@ -14,6 +14,6 @@ You can use this page to find a filtered list of restaurants in your area.
 https://lavanat.github.io/First-Up-Kickshaw/
 
 ## Screenshot of Deployed Application
-![Screenshot of Input Screen](./Screenshot-input-screen.png)
-![Screenshot of Results](./Screenshot-results-screen.png)
+![Screenshot of Input Screen](./assets/images/Screenshot-input-screen.png)
+![Screenshot of Results](./assets/images/Screenshot-results-screen.png)
 
