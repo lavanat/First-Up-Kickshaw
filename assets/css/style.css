@@ -99,7 +99,17 @@ img {
 
   
   .results{
-    background-color: pink;
-    margin-bottom: 20px;
-    max-width: 400px;
+    background-color: white;
+    color:  black;
+    margin: 20px;
+  }
+
+  .results-container {
+    display: flex;
+    gap: 50px 100px;
+    padding: 100px;
+    margin-left: 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: black;
   }
